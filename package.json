@@ -2,7 +2,7 @@
   "name": "star-wars-quiz-frontend-build",
   "version": "1.0.0",
   "description": "Frontend build process created by catalyst-frontend",
-  "main": "src/index.js",
+  "main": "src/index.jsx",
   "scripts": {
     "test": "./node_modules/.bin/jest",
     "build": "rm -rf ./dist && ./node_modules/.bin/webpack -p",
@@ -41,6 +41,7 @@
     "react": "^16.0.0",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.0.0",
+    "react-router-dom": "^4.2.2",
     "react-test-renderer": "^16.0.0",
     "retire": "^1.4.0",
     "sass-loader": "^6.0.6",
