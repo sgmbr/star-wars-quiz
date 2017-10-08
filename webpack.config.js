@@ -4,6 +4,7 @@ const flexfixes = require('postcss-flexbugs-fixes');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const merge = require('webpack-merge');
+const webpack = require('webpack');
 
 const env = process.env.npm_lifecycle_event === 'build' ? 'prod' : 'dev';
 let config = {};
@@ -23,12 +24,17 @@ const common = {
         enforce: 'pre', // lint files before they are transformed, config in .eslintrc.json
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
+        loader: 'eslint-loader'
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader' // config in .babelrc
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -42,11 +48,17 @@ const common = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       hash: true
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default']
     })
   ],
 
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.scss'],
+    extensions: ['.js', '.jsx', '.json', '.scss', '.css'],
     modules: [path.resolve(__dirname, 'src'), 'node_modules']
   }
 };

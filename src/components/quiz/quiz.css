@@ -1,0 +1,14 @@
+button:hover {
+  cursor: pointer;
+}
+
+.question {
+  padding: 2rem;
+  border: 1px solid #eee;
+  margin-bottom: 2rem;
+}
+
+.question-body {
+  padding: 2rem;
+  font-size: 2rem;
+}

@@ -11,10 +11,10 @@ class Nav extends Component {
               <NavLink to='/' className='nav-link' activeClassName='active' exact>Home</NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink to='/quiz/people' className='nav-link' activeClassName='active'>People Quiz</NavLink>
+              <NavLink to='/people' className='nav-link' activeClassName='active'>People Quiz</NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink to='/quiz/starships' className='nav-link' activeClassName='active'>Starships Quiz</NavLink>
+              <NavLink to='/starships' className='nav-link' activeClassName='active'>Starships Quiz</NavLink>
             </li>
             <li className='nav-item'>
               <NavLink to='/about' className='nav-link' activeClassName='active'>About</NavLink>

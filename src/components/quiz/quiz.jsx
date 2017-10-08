@@ -6,8 +6,8 @@ import StarshipsQuiz from 'components/quiz/starships'
 
 const Quiz = () => (
   <Switch>
-    <Route path='/quiz/people' component={PeopleQuiz} />
-    <Route path='/quiz/starships' component={StarshipsQuiz} />
+    <Route path='/quizpeople' component={PeopleQuiz} />
+    <Route path='/quizstarships' component={StarshipsQuiz} />
   </Switch>
 )
 export default Quiz

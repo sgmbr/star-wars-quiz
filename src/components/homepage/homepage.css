@@ -1,0 +1,14 @@
+.wrapper {
+  width: 60rem;
+  text-align: center;
+  margin: 8rem auto;
+}
+
+.title {
+  font-size: 6rem;
+  margin-bottom: 2rem;
+}
+
+.lead {
+  font-size: 2rem;
+}

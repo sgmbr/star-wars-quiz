@@ -4,17 +4,19 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import 'index.scss'
 import Homepage from 'components/homepage/homepage'
-import Quiz from 'components/quiz/quiz'
+import PeopleQuiz from 'components/quiz/people'
+import StarshipsQuiz from 'components/quiz/starships'
 import About from 'components/about/about'
 import Nav from 'components/nav/nav'
 
 ReactDOM.render(
   <Router>
-    <div className='container-fluid'>
+    <div className='container'>
       <Nav />
       <Switch>
         <Route exact path='/' component={Homepage} />
-        <Route path='/quiz' component={Quiz} />
+        <Route path='/people' component={PeopleQuiz} />
+        <Route path='/starships' component={StarshipsQuiz} />
         <Route path='/about' component={About} />
       </Switch>
     </div>
