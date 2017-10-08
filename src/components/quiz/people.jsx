@@ -43,7 +43,7 @@ class PeopleQuiz extends Component {
       let choices = shuffleArray([person.name, wrong1.name, wrong2.name, wrong3.name])
 
       this.setState({
-        question: `${person.height} cm ${person.mass} kg ${specie.name}, \nskin colour is ${person.skin_color}, whose home planet is ${homeworld.name}`,
+        question: `${person.height} cm ${person.mass} kg ${specie.name}, skin colour is ${person.skin_color}, whose home planet is ${homeworld.name}`,
         answer: person.name,
         choices: choices
       })

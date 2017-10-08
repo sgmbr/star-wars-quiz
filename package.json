@@ -5,7 +5,7 @@
   "main": "src/index.jsx",
   "scripts": {
     "test": "./node_modules/.bin/jest",
-    "build": "rm -rf ./dist && ./node_modules/.bin/webpack -p",
+    "build": "./node_modules/.bin/webpack -p",
     "start": "./node_modules/.bin/webpack-dev-server --hot --inline",
     "deps:check": "./node_modules/.bin/npm-check-updates && ./node_modules/.bin/retire",
     "deps:update": "./node_modules/.bin/npm-check-updates -u && ./node_modules/.bin/npm-check-updates -a && npm install && ./node_modules/.bin/retire",
