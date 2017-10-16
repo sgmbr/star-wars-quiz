@@ -6,8 +6,6 @@ import 'bootstrap'
 
 import Quiz from './quiz'
 
-import './quiz.css'
-
 class PeopleQuiz extends Component {
   constructor (props) {
     super(props)
