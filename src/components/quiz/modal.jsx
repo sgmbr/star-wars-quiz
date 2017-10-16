@@ -13,7 +13,7 @@ function Modal (props) {
             </button>
           </div>
           <div className='modal-body'>
-            The answer is {props.answer}
+            The answer is &quot;{props.answer}&quot;
           </div>
           <div className='modal-footer'>
             <button type='button' className='btn btn-primary' data-dismiss='modal' onClick={props.onClick}>Next Question</button>

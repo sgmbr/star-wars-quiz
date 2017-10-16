@@ -12,13 +12,14 @@ function json (response) {
   return response.json()
 }
 
-function fetchSwapi(url) {
+function fetchSwapi (url) {
   return (
     fetch(url)
       .then(checkStatus)
       .then(json)
       .catch(err => {
-        console.log('Request failed', err)
+        // console.log('Request failed', err)
+        throw err
       })
   )
 }
@@ -36,8 +37,7 @@ async function getAllEntries (url, entries) {
 }
 
 function getAllEntriesUrls (url) {
-  return getAllEntries(url)
-          .then(entries => entries.map(entry => entry.url))
+  return getAllEntries(url).then(entries => entries.map(entry => entry.url))
 }
 
 export { BASE_URL, fetchSwapi, getAllEntriesUrls }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { BASE_URL, fetchSwapi, getAllEntriesUrls } from 'lib/swapi'
+import PropTypes from 'prop-types'
+import { BASE_URL, fetchSwapi } from 'lib/swapi'
 import { shuffleArray, getRandomUrls } from 'lib/util'
 import $ from 'jquery'
 import 'bootstrap'
@@ -22,19 +23,39 @@ class PeopleQuiz extends Component {
   }
 
   componentDidMount () {
-    this.generateQuestion(this.state.peopleUrls)
+    this.generateQuestion(this.props.peopleUrls)
   }
 
-  async getAllEntriesUrls () {
-    const urls = await getAllEntriesUrls(`${BASE_URL}people/`)
+  // This detects props change
+  // Without this, it fails to re-render quiz when reloaded on PeopleQuiz page
+  /*
+  componentWillReceiveProps (nextProps) {
+    if (this.props.peopleUrls !== nextProps.peopleUrls) {
+      this.generateQuestion(nextProps.peopleUrls)
+    }
+  }
+  */
+
+  setLoadingState () {
+    // Loading sign
     this.setState({
-      peopleUrls: urls
+      question: 'doodoodoo...',
+      answer: '',
+      choices: ['', '', '', '']
     })
-    return urls
   }
 
   async generateQuestion (urls) {
-    urls = urls || await this.getAllEntriesUrls()
+    // Default question before urls are loaded
+    const defaultUrls = [
+      `${BASE_URL}people/1/`,
+      `${BASE_URL}people/2/`,
+      `${BASE_URL}people/3/`,
+      `${BASE_URL}people/4/`
+    ]
+    urls = urls.length ? urls : defaultUrls
+
+    this.setLoadingState()
 
     try {
       const randomUrls = getRandomUrls(urls)
@@ -49,7 +70,8 @@ class PeopleQuiz extends Component {
       })
       // console.log(person, wrong1, wrong2, wrong3)
     } catch (error) {
-      console.log('Request failed', error)
+      // console.log('Request failed', error)
+      throw error
     }
   }
 
@@ -62,7 +84,7 @@ class PeopleQuiz extends Component {
   }
 
   handleNextClick () {
-    this.generateQuestion(this.state.peopleUrls)
+    this.generateQuestion(this.props.peopleUrls)
   }
 
   render () {
@@ -90,4 +112,9 @@ class PeopleQuiz extends Component {
     )
   }
 }
+
+PeopleQuiz.propTypes = {
+  peopleUrls: PropTypes.array
+}
+
 export default PeopleQuiz

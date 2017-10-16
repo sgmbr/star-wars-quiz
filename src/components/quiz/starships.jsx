@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { BASE_URL, fetchSwapi, getAllEntriesUrls } from 'lib/swapi'
+import PropTypes from 'prop-types'
+import { fetchSwapi } from 'lib/swapi'
 import { shuffleArray, getRandomUrls } from 'lib/util'
 import $ from 'jquery'
 import 'bootstrap'
@@ -22,20 +23,18 @@ class StarshipsQuiz extends Component {
   }
 
   componentDidMount () {
-    this.generateQuestion(this.state.starshipsUrls)
+    this.generateQuestion(this.props.starshipsUrls)
   }
 
-  async getAllEntriesUrls () {
-    const urls = await getAllEntriesUrls(`${BASE_URL}starships/`)
-    this.setState({
-      starshipsUrls: urls
-    })
-    return urls
+  // This detects props change
+  // Without this, it fails to re-render quiz when reloaded on PeopleQuiz page
+  componentWillReceiveProps (nextProps) {
+    if (this.props.starshipsUrls !== nextProps.starshipsUrls) {
+      this.generateQuestion(nextProps.starshipsUrls)
+    }
   }
 
   async generateQuestion (urls) {
-    urls = urls || await this.getAllEntriesUrls()
-
     try {
       const randomUrls = getRandomUrls(urls)
       const [starship, wrong1, wrong2, wrong3] = await Promise.all([fetchSwapi(randomUrls[0]), fetchSwapi(randomUrls[1]), fetchSwapi(randomUrls[2]), fetchSwapi(randomUrls[3])])
@@ -49,7 +48,8 @@ class StarshipsQuiz extends Component {
       })
       // console.log(person, wrong1, wrong2, wrong3)
     } catch (error) {
-      console.log('Request failed', error)
+      // console.log('Request failed', error)
+      throw error
     }
   }
 
@@ -62,7 +62,7 @@ class StarshipsQuiz extends Component {
   }
 
   handleNextClick () {
-    this.generateQuestion(this.state.starshipsUrls)
+    this.generateQuestion(this.props.starshipsUrls)
   }
 
   render () {
@@ -90,4 +90,9 @@ class StarshipsQuiz extends Component {
     )
   }
 }
+
+StarshipsQuiz.propTypes = {
+  starshipsUrls: PropTypes.array
+}
+
 export default StarshipsQuiz
