@@ -1,4 +1,4 @@
-import { shuffleArray, getRandomUrls } from '../src/lib/util.js'
+import { shuffleArray, getRandomUrls } from '../../src/lib/util.js'
 
 describe('shuffleArray', () => {
   it('returns an array', () => {

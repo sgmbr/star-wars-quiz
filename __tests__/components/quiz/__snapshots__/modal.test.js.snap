@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component renders modal 1`] = `
+<div
+  aria-hidden="true"
+  aria-labelledby="checkAnswer"
+  className="modal fade"
+  id="checkAnswer"
+  role="dialog"
+  tabIndex="-1"
+>
+  <div
+    className="modal-dialog"
+    role="document"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header"
+      >
+        <h5
+          className="modal-title"
+          id="checkAnswerLabel"
+        >
+          Correct Answer
+        </h5>
+        <button
+          aria-label="Close"
+          className="close"
+          data-dismiss="modal"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+        </button>
+      </div>
+      <div
+        className="modal-body"
+      >
+        The answer is "
+        Luke Skywalker
+        "
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <button
+          className="btn btn-primary"
+          data-dismiss="modal"
+          onClick={[Function]}
+          type="button"
+        >
+          Next Question
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal component throws error with wrong prop type 1`] = `
+<div
+  aria-hidden="true"
+  aria-labelledby="checkAnswer"
+  className="modal fade"
+  id="checkAnswer"
+  role="dialog"
+  tabIndex="-1"
+>
+  <div
+    className="modal-dialog"
+    role="document"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header"
+      >
+        <h5
+          className="modal-title"
+          id="checkAnswerLabel"
+        />
+        <button
+          aria-label="Close"
+          className="close"
+          data-dismiss="modal"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+        </button>
+      </div>
+      <div
+        className="modal-body"
+      >
+        The answer is "
+        "
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <button
+          className="btn btn-primary"
+          data-dismiss="modal"
+          onClick={undefined}
+          type="button"
+        >
+          Next Question
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
